@@ -10,6 +10,7 @@
 #include <fstream>
 #include <cmath>
 using namespace std;
+int counter=0;
 int main(int argc, const char * argv[]) {
     if(argc!=3){
         cout<<"args number should be 3\n";
@@ -24,24 +25,27 @@ int main(int argc, const char * argv[]) {
     while(true){
         if(ins1.eof()){
             cout<<"first file reach the end\n";
-            cout<<"no differnece detected\n";
+            printf("difference occurs %d times\n",counter);
             exit(0);
         }
         if(ins2.eof()){
             cout<<"second file reach the end\n";
-            cout<<"no differnece detected\n";
+            printf("difference occurs %d times\n",counter);
             exit(0);
         }
         string number1,number2;
+        if(number1==""||number2==""){
+            cout<<"file reach the end\n";
+            printf("difference occurs %d times\n",counter);
+            exit(0);
+        }
         ins1>>number1;
         ins2>>number2;
         float n1,n2;
-        n1=stof(number1);
-        n2=stof(number2);
-        if(abs(n1-n2)>0.0001){
-            printf("value not the same \n");
-        }
-        
+        n1=atof(number1.c_str());
+        n2=atof(number2.c_str());
+        if(abs(n1-n2)>=0.00001)
+            counter++;
         
     }
     return 0;
