@@ -46,6 +46,8 @@ int main(int argc, const char * argv[]) {
         n2=atof(number2.c_str());
         if(abs(n1-n2)>=0.00001)
             counter++;
+        ins1.close();
+        ins2.close();
         
     }
     return 0;
