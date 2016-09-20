@@ -34,13 +34,13 @@ int main(int argc, const char * argv[]) {
             exit(0);
         }
         string number1,number2;
+        ins1>>number1;
+        ins2>>number2;
         if(number1==""||number2==""){
             cout<<"file reach the end\n";
             printf("difference occurs %d times\n",counter);
             exit(0);
         }
-        ins1>>number1;
-        ins2>>number2;
         float n1,n2;
         n1=atof(number1.c_str());
         n2=atof(number2.c_str());
