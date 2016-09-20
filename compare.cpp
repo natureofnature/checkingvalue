@@ -11,6 +11,7 @@
 #include <cmath>
 using namespace std;
 int counter=0;
+int pass=0;
 int main(int argc, const char * argv[]) {
     if(argc!=3){
         cout<<"args number should be 3\n";
@@ -23,12 +24,15 @@ int main(int argc, const char * argv[]) {
     ins1.open(file1,ios::in);
     ins2.open(file2,ios::in);
     while(true){
+        pass++;
         if(ins1.eof()){
+            cout<<"have compared "<<pass<<" times"<<endl;
             cout<<"first file reach the end\n";
             printf("difference occurs %d times\n",counter);
             exit(0);
         }
         if(ins2.eof()){
+            cout<<"have compared "<<pass<<" times"<<endl;
             cout<<"second file reach the end\n";
             printf("difference occurs %d times\n",counter);
             exit(0);
@@ -37,6 +41,7 @@ int main(int argc, const char * argv[]) {
         ins1>>number1;
         ins2>>number2;
         if(number1==""||number2==""){
+            cout<<"have compared "<<pass<<" times"<<endl;
             cout<<"file reach the end\n";
             printf("difference occurs %d times\n",counter);
             exit(0);
@@ -46,9 +51,10 @@ int main(int argc, const char * argv[]) {
         n2=atof(number2.c_str());
         if(abs(n1-n2)>=0.00001)
             counter++;
-        ins1.close();
-        ins2.close();
+        
         
     }
+    ins1.close();
+    ins2.close();
     return 0;
 }
