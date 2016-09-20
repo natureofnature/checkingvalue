@@ -6,13 +6,21 @@
 //  Copyright © 2016 NATURE. All rights reserved.
 //
 
+/*
+    Note! give the first non-ignore value to KEYWORD
+ */
+
 #include <iostream>
 #include <fstream>
 #include <cmath>
 using namespace std;
 int counter=0;
 int pass=0;
-
+#define FILTER
+#ifdef FILTER
+bool filter=true;
+#define KEYWORD "0.000000"
+#endif
 int main(int argc, const char * argv[]) {
     if(argc!=3){
         cout<<"args number should be 3\n";
@@ -45,6 +53,16 @@ int main(int argc, const char * argv[]) {
         ins1>>number1;
         ins2>>number2;
 
+
+#ifdef FILTER
+        /*according to your need*/
+        while(filter&&number2!=KEYWORD){
+            ins2>>number2;
+            cout<<"number2 "<<number2<<endl;
+        }
+        
+        filter=false;
+#endif
 
         if(number1==""||number2==""){
             cout<<"have compared "<<pass<<" times"<<endl;
